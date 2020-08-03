@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Mahasiswa;
 use App\Prodi;
 use DataTables;
 use Illuminate\Http\Request;
+
 class MahasiswaController extends Controller
 {
     /**
@@ -15,17 +17,20 @@ class MahasiswaController extends Controller
    {
         return view('mahasiswa.index');
    }
+
     public function mhs_list()
+
    {
-        $mhs = Mahasiswa::with('mprodi')->get();
-        return Datatables::of($mhs)
-                ->addIndexColumn()
-                ->addColumn('action', function ($mhs) {
-                    $action = '<a class="text-primary" href="/mhs/edit/'.$mhs->nim.'">Edit</a>';
-                    $action .= ' | <a class="text-danger" href="/mhs/delete/'.$mhs->nim.'">Hapus</a>';
-                    return $action;
-               })
-                ->make();
+     $mhs = Mahasiswa::with('mprodi')->get();
+     return Datatables::of($mhs)
+             ->addIndexColumn()
+             ->addColumn('action', function ($mhs) {
+                 $action = '<a class="text-primary"href="/mhs/edit/'.$mhs->nim.'">Edit</a>';
+                 $action .= ' | <a class="text-danger"href="/mhs/delete/'.$mhs->nim.'">Hapus</a>';
+                 return $action;
+            })
+             ->make();
+
    }
     /**
      * Show the form for creating a new resource.
