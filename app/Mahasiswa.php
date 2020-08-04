@@ -9,7 +9,7 @@ class Mahasiswa extends Model
     protected $fillable = ['nim','nama_lengkap','prodi','alamat'];
     //Field yang diabaikan isiannya
     protected $guarded = [];
-    public function mprodi()
+    public function prodi()
    {
         return $this->hasOne('App\Prodi','kode_prodi','prodi');
    }

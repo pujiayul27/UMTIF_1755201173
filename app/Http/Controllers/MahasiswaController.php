@@ -21,7 +21,7 @@ class MahasiswaController extends Controller
     public function mhs_list()
 
    {
-     $mhs = Mahasiswa::with('mprodi')->get();
+     $mhs = Mahasiswa::with('prodi')->get();
      return Datatables::of($mhs)
              ->addIndexColumn()
              ->addColumn('action', function ($mhs) {
